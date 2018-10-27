@@ -9,7 +9,18 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <title>Avaliador Político</title>
-    <base href="/angular-avaliador-politico/">  <link rel="stylesheet" href="styles.73bb39d04c6f535a6d93.css"></head>
+    <base href="/angular-avaliador-politico/">    
+    <script>
+        // See http://www.backalleycoder.com/2016/05/13/sghpa-the-single-page-app-hack-for-github-pages/
+        (function(){
+          var redirect = sessionStorage.redirect;
+          delete sessionStorage.redirect;
+          if (redirect && redirect != location.href) {
+            history.replaceState(null, null, redirect);
+          }
+        })();
+      </script>
+  <link rel="stylesheet" href="styles.73bb39d04c6f535a6d93.css"></head>
   <body>
       <app-root></app-root>
 
