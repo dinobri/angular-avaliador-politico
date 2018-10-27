@@ -1,0 +1,10 @@
+{
+    "files.exclude": {
+        "**/*.spec.ts": true,
+        "**/tsconfig*.json": true,
+        "**/tslint.json": true,
+        "e2e": true,
+        "src/*.ts": true,
+        "src/karma*": true
+    }
+}

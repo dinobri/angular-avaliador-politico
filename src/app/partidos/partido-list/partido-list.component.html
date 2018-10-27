@@ -1,0 +1,21 @@
+
+<h2 class="titulo-pagina">Partidos</h2>
+
+<table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Sigla</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Membros</th>
+        <th scope="col">Avaliação</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let partido of partidos">
+        <td>{{partido.sigla}}</td>
+        <td>{{partido.nome}}</td>
+        <td>{{partido.politicos.length}}</td>
+        <td>{{partido.sigla}}</td>
+      </tr>
+    </tbody>
+  </table>
