@@ -12,4 +12,12 @@ export class PartidoService{
   getPartidos(): Observable<Partido[]>{
     return this.databaseService.getPartidos();
   }
+
+  getPartido(sigla: string): Observable<Partido>{
+    return this.databaseService.getPartido(sigla);
+  }
+
+  adicionarPartido(novoPartido: Partido){
+    this.databaseService.adicionarPartido(novoPartido);
+  }
 }

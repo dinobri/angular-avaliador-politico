@@ -19,6 +19,10 @@ export class Partido{
         return this.nome;
     }
 
+    getSigla(): string{
+        return this.sigla;
+    }
+
     getAvaliacaoGeral(): number{
         return this.avaliacaoGeral;
     }

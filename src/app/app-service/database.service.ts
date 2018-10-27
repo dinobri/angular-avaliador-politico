@@ -17,8 +17,12 @@ export class DatabaseService {
     return of(this.partidos);
   }
 
-  adicionarPartido(partido: Partido){
+  getPartido(sigla: string): Observable<Partido>{
+    return of(this.partidos.find(p => p.getSigla() === sigla));
+  }
 
+  adicionarPartido(partido: Partido){
+    this.partidos.push(partido);
   }
 
   private carregarPartidosMock(){

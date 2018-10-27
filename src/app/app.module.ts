@@ -16,8 +16,6 @@ import { MaterialComponentsModule } from './material-components.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    MaterialComponentsModule,
     PartidoModule,
   ],
   providers: [],
