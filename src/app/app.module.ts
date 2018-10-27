@@ -4,9 +4,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { PartidoModule } from './partidos/partido.module';
 import { HomeComponent } from './home/home.component';
-import { MaterialComponentsModule } from './material-components.module';
+import { PartidoModule } from './partidos/partido.module';
+import { PoliticoModule } from './politicos/politico.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +17,7 @@ import { MaterialComponentsModule } from './material-components.module';
     BrowserModule,
     AppRoutingModule,
     PartidoModule,
+    PoliticoModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,9 +5,10 @@ const PESO_MANDATO_RECENTE: number = 2;
 const PASSO_MANDATO_RECENTE: number = 0.5;
 
 export class Politico{
-    private avaliacaoGeral: number;
-    private mandatos: Mandato[];
-    private partido: Partido
+    id: number;
+    avaliacaoGeral: number;
+    mandatos: Mandato[];
+    partido: Partido
 
     constructor(private nome: string){}
 

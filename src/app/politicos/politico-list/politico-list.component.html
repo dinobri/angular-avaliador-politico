@@ -1,0 +1,26 @@
+<h2 class="titulo-pagina">Políticos</h2>
+
+<div class="acoes text-right my-2">
+  <button class="btn btn-primary btn-sm" routerLink="/politico">Adicionar</button>
+</div>
+
+<table class="table table-sm table-hover">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Nome</th>
+      <!-- <th scope="col">Nome</th>
+      <th scope="col">Membros</th>
+      <th scope="col">Avaliação</th> -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let politico of politicos" routerLink="/politico/{{politico.sigla}}">
+      <td>{{politico.nome}}</td>
+      <!-- <td>{{politico.nome}}</td>
+      <td>{{politico.politicos.length}}</td>
+      <td>{{politico.avaliacaoGeral}}</td> -->
+    </tr>
+  </tbody>
+</table>
+
+<p class="text-muted" *ngIf="!politicos.length">Nenhum político cadastrado.</p>

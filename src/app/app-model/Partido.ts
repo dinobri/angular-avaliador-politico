@@ -2,10 +2,10 @@ import { Politico } from './Politico';
 
 export class Partido{
     // id: number;
-    private avaliacaoGeral: number;
-    private politicos: Politico[];
+    avaliacaoGeral: number;
+    politicos: Politico[];
 
-    constructor(private nome: string, private sigla: string){
+    constructor(public nome: string, public sigla: string){
         this.politicos = [];
         this.avaliacaoGeral = 0;
     }
