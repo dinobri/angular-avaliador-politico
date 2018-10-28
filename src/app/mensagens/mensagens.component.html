@@ -1,0 +1,10 @@
+<div *ngIf="mensagemService.mensagens.length">
+
+  <div class="alert alert-primary" role="alert">
+    <button type="button" class="close" (click)="mensagemService.limpar();">
+      <span>&times;</span>
+    </button>
+
+    <p *ngFor='let mensagem of mensagemService.mensagens'> {{mensagem}} </p>
+  </div>
+</div>
