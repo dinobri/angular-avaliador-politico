@@ -17,7 +17,7 @@ export class PoliticoService {
     return this.databaseService.getPolitico(id);
   }
 
-  adicionarPolitico(novoPolitico: Politico){
-    this.databaseService.adicionarPolitico(novoPolitico);
+  salvarPolitico(novoPolitico: Politico){
+    this.databaseService.salvarPolitico(novoPolitico);
   }
 }

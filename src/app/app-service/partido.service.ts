@@ -17,7 +17,7 @@ export class PartidoService{
     return this.databaseService.getPartido(sigla);
   }
 
-  adicionarPartido(novoPartido: Partido){
-    this.databaseService.adicionarPartido(novoPartido);
+  salvarPartido(partido: Partido){
+    this.databaseService.salvarPartido(partido);
   }
 }

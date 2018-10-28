@@ -8,17 +8,13 @@
   <thead class="thead-light">
     <tr>
       <th scope="col">Nome</th>
-      <!-- <th scope="col">Nome</th>
-      <th scope="col">Membros</th>
-      <th scope="col">Avaliação</th> -->
+      <th scope="col">Partido</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let politico of politicos" routerLink="/politico/{{politico.sigla}}">
+    <tr *ngFor="let politico of politicos" routerLink="/politico/{{politico.id}}">
       <td>{{politico.nome}}</td>
-      <!-- <td>{{politico.nome}}</td>
-      <td>{{politico.politicos.length}}</td>
-      <td>{{politico.avaliacaoGeral}}</td> -->
+      <td>{{politico.partido.sigla}} - {{politico.partido.nome}}</td>
     </tr>
   </tbody>
 </table>

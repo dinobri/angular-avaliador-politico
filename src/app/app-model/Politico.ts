@@ -8,9 +8,11 @@ export class Politico{
     id: number;
     avaliacaoGeral: number;
     mandatos: Mandato[];
-    partido: Partido
 
-    constructor(private nome: string){}
+    constructor(public nome: string, public partido: Partido){
+        if(partido)
+            this.partido.adicionarPolitico(this);
+    }
 
     getNome(): string{
         return this.nome;

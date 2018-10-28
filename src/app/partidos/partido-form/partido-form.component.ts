@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { PartidoService } from '../../app-service/partido.service';
-import { ActivatedRoute } from '@angular/router';
 import { Partido } from '../../app-model/Partido';
 
 @Component({
@@ -34,7 +34,7 @@ export class PartidoFormComponent implements OnInit {
   }
 
   salvar(){
-    this.partidoService.adicionarPartido(this.partido);
+    this.partidoService.salvarPartido(this.partido);
     this.voltar();
   }
 

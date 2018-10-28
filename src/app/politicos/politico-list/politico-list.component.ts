@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { PoliticoService } from '../../app-service/politico.service';
 import { Politico } from '../../app-model/Politico';
 
@@ -14,6 +15,7 @@ export class PoliticoListComponent implements OnInit {
   constructor(private politicoService: PoliticoService) { }
 
   ngOnInit() {
+    this.getPoliticos();
   }
 
   getPoliticos(){

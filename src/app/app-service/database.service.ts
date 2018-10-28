@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Partido } from '../app-model/Partido';
-import { PARTIDOS } from '../app-mock/partido-mock';
 import { Politico } from '../app-model/Politico';
+import { PARTIDOS } from '../app-mock/partido-mock';
+import { POLITICOS } from '../app-mock/politico-mock';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +11,11 @@ import { Politico } from '../app-model/Politico';
 export class DatabaseService {
   private partidos: Partido[] = [];
   private politicos: Politico[] = [];
+  private proximoIdPolitico = 1;
   
   constructor() {
     this.carregarPartidosMock();
+    this.carregarPoliticosMock();
   }
 
   // PARTIDOS
@@ -24,12 +27,16 @@ export class DatabaseService {
     return of(this.partidos.find(p => p.getSigla() === sigla));
   }
 
-  adicionarPartido(partido: Partido){
+  salvarPartido(partido: Partido){
+    if(this.partidos.some(p => p.sigla === partido.sigla))
+      return;
+
     this.partidos.push(partido);
   }
 
   private carregarPartidosMock(){
     this.partidos = PARTIDOS;
+    // console.log(this.partidos);
   }
 
   // POLITICOS
@@ -41,11 +48,26 @@ export class DatabaseService {
     return of(this.politicos.find(p => p.id === id));
   }
 
-  adicionarPolitico(politico: Politico){
+  salvarPolitico(politico: Politico){
+    if(politico.id){
+      let partido: Partido = this.getPartidoPorPolitico(politico.id);
+      partido.politicos = partido.politicos.filter(p => p.id !== politico.id);
+      politico.partido.politicos.push(politico);
+      return;
+    }
+      
     this.politicos.push(politico);
   }
 
   private carregarPoliticosMock(){
-    this.partidos = PARTIDOS;
+    this.politicos = POLITICOS;
+
+    this.politicos.forEach(p => p.id = this.proximoIdPolitico++);
+    // console.log(this.politicos);
+    // console.log(this.proximoIdPolitico);
+  }
+
+  private getPartidoPorPolitico(idPolitico: number): Partido{
+    return this.partidos.find(p => p.politicos.some(pol => pol.id === idPolitico));
   }
 }

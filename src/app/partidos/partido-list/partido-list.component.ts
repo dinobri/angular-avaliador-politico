@@ -11,7 +11,6 @@ import { PartidoService } from '../../app-service/partido.service';
 export class PartidoListComponent implements OnInit {
 
   partidos: Partido[] = [];
-  colunasTabela: string[] = ['nome'];
 
   constructor(private partidoService: PartidoService) { }
 
