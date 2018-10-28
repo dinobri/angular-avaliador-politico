@@ -7,6 +7,8 @@ import { HomeComponent } from './home/home.component';
 import { PartidoModule } from './partidos/partido.module';
 import { PoliticoModule } from './politicos/politico.module';
 import { MensagensComponent } from './mensagens/mensagens.component';
+import * as $ from 'jquery';
+import * as bootstrap from "bootstrap";
 
 @NgModule({
   declarations: [

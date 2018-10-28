@@ -12,6 +12,7 @@ export class DatabaseService {
   private partidos: Partido[] = [];
   private politicos: Politico[] = [];
   private proximoIdPolitico = 1;
+  private proximoIdMandato = 1;
   
   constructor() {
     this.carregarPartidosMock();
@@ -54,20 +55,30 @@ export class DatabaseService {
       partido.politicos = partido.politicos.filter(p => p.id !== politico.id);
       politico.partido.politicos.push(politico);
       return;
-    }
+    } 
       
+    politico.id = this.proximoIdPolitico++;
+    politico.partido.adicionarPolitico(politico);
     this.politicos.push(politico);
   }
 
   private carregarPoliticosMock(){
     this.politicos = POLITICOS;
 
-    this.politicos.forEach(p => p.id = this.proximoIdPolitico++);
+    this.politicos.forEach(p => {
+      p.id = this.proximoIdPolitico++;
+      p.mandatos.forEach(m => m.id = this.proximoIdMandato++);
+    });
     // console.log(this.politicos);
     // console.log(this.proximoIdPolitico);
   }
 
   private getPartidoPorPolitico(idPolitico: number): Partido{
     return this.partidos.find(p => p.politicos.some(pol => pol.id === idPolitico));
+  }
+
+  //MANDATO
+  getProximoIdMandato(): Observable<number>{
+    return of(this.proximoIdMandato++);
   }
 }

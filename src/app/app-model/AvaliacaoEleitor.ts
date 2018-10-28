@@ -1,3 +1,3 @@
 export class AvaliacaoEleitor{
-    constructor(private cpf: string, private avaliacao: number){}
+    constructor(public cpf: string, public avaliacao: number){}
 }

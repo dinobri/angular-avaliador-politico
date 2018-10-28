@@ -20,4 +20,8 @@ export class PoliticoService {
   salvarPolitico(novoPolitico: Politico){
     this.databaseService.salvarPolitico(novoPolitico);
   }
+
+  getProximoIdMandato(): Observable<number>{
+    return this.databaseService.getProximoIdMandato();
+  }
 }

@@ -7,7 +7,7 @@ const PASSO_MANDATO_RECENTE: number = 0.5;
 export class Politico{
     id: number;
     avaliacaoGeral: number;
-    mandatos: Mandato[];
+    mandatos: Mandato[] = [];
 
     constructor(public nome: string, public partido: Partido){
         if(partido)
