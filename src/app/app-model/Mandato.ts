@@ -17,21 +17,33 @@ export abstract class Mandato{
 
     abstract avaliar(): number;
 
-    avaliarDenuncias(): number{
+    protected avaliarDenuncias(): number{
         let avaliacaoDenuncia = this.denuncias * 0.5;
         return avaliacaoDenuncia > PESO_DENUNCIA ? PESO_DENUNCIA : PESO_DENUNCIA - avaliacaoDenuncia;
     }
 
-    contabilizarAvaliacaoEleitores(): number {
+    protected contabilizarAvaliacaoEleitores(): number {
 		if (this.avaliacoesEleitores.length === 0)
 			return 7 / PESO_ELEITORES;
 
-        let avaliacaoEleitores = this.avaliacoesEleitores.reduce((soma, avEleitor) => soma + avEleitor.avaliacao, 0) / this.avaliacoesEleitores.length;
-        debugger;
-		avaliacaoEleitores *= PESO_ELEITORES;
+        this.avaliacaoEleitores = this.avaliacoesEleitores.reduce((soma, avEleitor) => soma + avEleitor.avaliacao, 0) / this.avaliacoesEleitores.length;
+		let avaliacaoEleitores = this.avaliacaoEleitores * PESO_ELEITORES;
 
-        this.avaliacaoEleitores = avaliacaoEleitores / 10;
-        return this.avaliacaoEleitores;
+        return avaliacaoEleitores / 10;
+    }
+    
+    public incluirAvaliacaoEleitor(cpf: string, avaliacao: number) {
+		if (this.avaliacoesEleitores.some(ae => ae.cpf === cpf)) {
+			// TODO: Mensagem ("Já existe uma avaliaçãoo com este CPF ("+ cpf +").");
+			return;
+		}
+
+		if (avaliacao < 0 || avaliacao > 10) {
+			// TODO: Mensagem ("A avaliaçãoo de um mandato deve ser uma nota de 0 a 10.");
+			return;
+		}
+
+		this.avaliacoesEleitores.push(new AvaliacaoEleitor(cpf, avaliacao));
 	}
 }
 

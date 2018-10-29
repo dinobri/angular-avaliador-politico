@@ -16,6 +16,10 @@ export class MandatoLegislativo extends Mandato {
     }
 
     avaliar(): number {
-        throw new Error('Method not implemented.');
+        let avaliacaoProjetos = (this.projetosAprovados / this.projetosPropostos) * PESO_PROJETOS;
+		let avaliacaoPresenca = this.presenca * PESO_PRESENCA;
+		this.avaliacao = avaliacaoProjetos + avaliacaoPresenca + this.avaliarDenuncias() + this.contabilizarAvaliacaoEleitores();
+        
+		return this.avaliacao;
     }
 }

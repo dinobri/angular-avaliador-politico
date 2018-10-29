@@ -15,13 +15,8 @@ export class MandatoExecutivo extends Mandato{
     
     avaliar():number {
         let avaliacaoPromessaCampanha = (this.promessasCumpridas / this.promessasCampanha) * PESO_PROMESSAS_CAMPANHA;
+        this.avaliacao = avaliacaoPromessaCampanha + this.avaliarDenuncias() + this.contabilizarAvaliacaoEleitores();
 
         return this.avaliacao;
-        /*
-            double avaliacaoPromessasCampanha = (promessasCumpridas / (double) promessasCampanha) * PESO_PROMESSAS_CAMPANHA;
-		
-            setAvaliacao(avaliacaoPromessasCampanha + avaliarDenuncias() + contabilizarAvaliacaoEleitores());
-            return getAvaliacao();
-        */
     }
 }

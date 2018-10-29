@@ -1,9 +1,19 @@
-<h2 *ngIf="!politico.nome">Novo político</h2>
-<h2 *ngIf="politico.nome">{{politico.nome}}</h2>
 
 <div class="row">
   <div class="col-lg-8">
-
+    <div class="row">
+      <div class="col-9">
+        <h2 *ngIf="!politico.nome">Novo político</h2>
+        <h2 *ngIf="politico.nome">{{politico.nome}}</h2>
+      </div>
+      <div class="col-3">
+        <div class="text-right">
+          <small class="text-muted">Avaliação</small>
+          <h3>{{politico.avaliacaoGeral | number:'1.2-2'}}</h3>
+        </div>
+      </div>
+    </div>
+    
     <div class="form-group">
       <label for="nome-politico">Nome</label>
       <input type="text" class="form-control" id="nome-politico" [(ngModel)]="politico.nome">
@@ -32,7 +42,7 @@
             <tr *ngFor="let mandato of politico.mandatos" (click)="abrirMandato(mandato)">
               <td>{{mandato.anoInicial}} - {{mandato.anoFinal}}</td>
               <td>{{mandato.tipoMandato}}</td>
-              <td>{{mandato.avaliacao}}</td>
+              <td>{{mandato.avaliacao | number:'1.1-1'}}</td>
             </tr>
           </tbody>
         </table>
@@ -134,7 +144,8 @@
 
         <div class="form-group">
           <label>Avaliação dos Eleitores</label>
-          <input type="text" step="1" class="form-control" id="anoInicial" (ngModel)="mandatoLeg.avaliacaoEleitores" readonly>
+          <input type="text" step="1" class="form-control" id="anoInicial" [ngModel]="mandatoLeg.avaliacaoEleitores | number:'1.1-2'"
+            readonly>
         </div>
 
       </div>
@@ -198,7 +209,8 @@
 
         <div class="form-group">
           <label>Avaliação dos Eleitores</label>
-          <input type="text" step="1" class="form-control" id="anoInicial" (ngModel)="mandatoExec.avaliacaoEleitores" readonly>
+          <input type="text" step="1" class="form-control" id="anoInicial" [ngModel]="mandatoExec.avaliacaoEleitores | number:'1.1-2'"
+            readonly>
         </div>
       </div>
 

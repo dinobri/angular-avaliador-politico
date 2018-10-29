@@ -9,12 +9,14 @@
     <tr>
       <th scope="col">Nome</th>
       <th scope="col">Partido</th>
+      <th scope="col">Avaliação geral</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let politico of politicos" routerLink="/politico/{{politico.id}}">
       <td>{{politico.nome}}</td>
       <td>{{politico.partido.sigla}} - {{politico.partido.nome}}</td>
+      <td>{{politico.avaliacaoGeral | number:'1.2-2'}}</td>
     </tr>
   </tbody>
 </table>

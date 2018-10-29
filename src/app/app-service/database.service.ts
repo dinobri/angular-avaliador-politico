@@ -67,7 +67,12 @@ export class DatabaseService {
 
     this.politicos.forEach(p => {
       p.id = this.proximoIdPolitico++;
-      p.mandatos.forEach(m => m.id = this.proximoIdMandato++);
+      p.mandatos.forEach(m => {
+        m.id = this.proximoIdMandato++;
+        m.avaliar();
+      });
+
+      p.avaliarMandatos();
     });
     // console.log(this.politicos);
     // console.log(this.proximoIdPolitico);
