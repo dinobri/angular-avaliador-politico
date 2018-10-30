@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class PoliticoService {
   constructor(private databaseService: DatabaseService) { }
 
-  getPartidos(): Observable<Politico[]>{
+  getPoliticos(): Observable<Politico[]>{
     return this.databaseService.getPoliticos();
   }
 

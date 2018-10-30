@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-lg-8">
+    <h2 class="titulo-pagina">Avaliação do Eleitor</h2>
+
+    <p class="text-muted mb-4">
+      Informe seu cpf e escolha partido, político e mandato para avaliar.
+    </p>
+
+    <div class="form-group">
+      <label for="cpf">CPF</label>
+      <input type="text" class="form-control" id="cpf" [(ngModel)]="cpf" required>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label for="partido">Partido</label>
+          <select id="partido" class="custom-select" [(ngModel)]="partido" (change)="aoMudarPartido();">
+            <!-- <option [ngValue]="null">Selecione um partido</option> -->
+            <option *ngFor="let p of partidos" [ngValue]="p">{{p.sigla}} - {{p.nome}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group" *ngIf="partido">
+          <label for="politico">Político</label>
+          <select id="politico" class="custom-select" [(ngModel)]="politico" (change)="aoMudarPolitico();">
+            <!-- <option [ngValue]="null">Selecione um partido</option> -->
+            <option *ngFor="let pol of partido.politicos" [ngValue]="pol">{{pol.nome}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group" *ngIf="politico">
+          <label for="mandato">Mandato</label>
+          <select id="mandato" class="custom-select" [(ngModel)]="mandato" (change)="aoMudarMandato();">
+            <!-- <option [ngValue]="null">Selecione um partido</option> -->
+            <option *ngFor="let m of politico.mandatos" [ngValue]="m">[{{m.anoInicial}} - {{m.anoFinal}}]
+              {{m.tipoMandato}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group" *ngIf="mandato">
+          <label for="avaliacao">Avaliação</label>
+          <input type="number" step="0.1" class="form-control form-control-lg" id="avaliacao" [(ngModel)]="avaliacao"
+            required>
+        </div>
+      </div>
+    </div>
+
+    <div class="acoes my-5">
+        <button type="button" class="btn btn-sm btn-secondary mr-1" (click)="limpar();">Limpar</button>
+        <button type="button" class="btn btn-sm btn-primary mr-1" (click)="salvar();">Salvar</button>
+      </div>
+  </div>
+</div>

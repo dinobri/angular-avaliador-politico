@@ -43,7 +43,9 @@ export abstract class Mandato{
 			return;
 		}
 
-		this.avaliacoesEleitores.push(new AvaliacaoEleitor(cpf, avaliacao));
+        this.avaliacoesEleitores.push(new AvaliacaoEleitor(cpf, avaliacao));
+        
+        this.avaliar();
 	}
 }
 

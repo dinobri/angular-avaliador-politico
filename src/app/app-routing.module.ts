@@ -5,6 +5,7 @@ import { PartidoFormComponent } from './partidos/partido-form/partido-form.compo
 import { HomeComponent } from './home/home.component';
 import { PoliticoListComponent } from './politicos/politico-list/politico-list.component';
 import { PoliticoFormComponent } from './politicos/politico-form/politico-form.component';
+import { AvaliacaoEleitorComponent } from './eleitores/avaliacao-eleitor/avaliacao-eleitor.component';
 
 const routes:Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -15,7 +16,7 @@ const routes:Routes = [
   {path: 'politicos', component: PoliticoListComponent},
   {path: 'politico', component: PoliticoFormComponent},
   {path: 'politico/:id', component: PoliticoFormComponent},
-  {path: 'eleitor', component: PartidoFormComponent},
+  {path: 'eleitor', component: AvaliacaoEleitorComponent},
 ];
 
 @NgModule({

@@ -19,7 +19,7 @@ export class PoliticoListComponent implements OnInit {
   }
 
   getPoliticos(){
-    this.politicoService.getPartidos()
+    this.politicoService.getPoliticos()
       .subscribe(politicos => this.politicos = politicos);
   }
 }
