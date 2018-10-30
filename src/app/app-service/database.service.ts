@@ -15,8 +15,8 @@ export class DatabaseService {
   private proximoIdMandato = 1;
   
   constructor() {
-    this.carregarPartidosMock();
     this.carregarPoliticosMock();
+    this.carregarPartidosMock();
   }
 
   // PARTIDOS
@@ -37,6 +37,7 @@ export class DatabaseService {
 
   private carregarPartidosMock(){
     this.partidos = PARTIDOS;
+    this.partidos.forEach(p => p.avaliar());
     // console.log(this.partidos);
   }
 

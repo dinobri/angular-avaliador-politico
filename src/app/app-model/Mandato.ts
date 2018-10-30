@@ -23,7 +23,7 @@ export abstract class Mandato{
     }
 
     protected contabilizarAvaliacaoEleitores(): number {
-		if (this.avaliacoesEleitores.length === 0)
+		if (!this.avaliacoesEleitores.length)
 			return 7 / PESO_ELEITORES;
 
         this.avaliacaoEleitores = this.avaliacoesEleitores.reduce((soma, avEleitor) => soma + avEleitor.avaliacao, 0) / this.avaliacoesEleitores.length;

@@ -1,37 +1,39 @@
 import { Politico } from './Politico';
 
-export class Partido{
+export class Partido {
     // id: number;
     avaliacaoGeral: number;
     politicos: Politico[];
 
-    constructor(public nome: string, public sigla: string){
+    constructor(public nome: string, public sigla: string) {
         this.politicos = [];
         this.avaliacaoGeral = 0;
     }
 
-    avaliar(): number{
-        // TODO: algoritmo de avaliação
+    avaliar(): number {
+        if (this.politicos.length)
+            this.avaliacaoGeral = this.politicos.reduce((soma, politico) => soma + politico.avaliacaoGeral, 0) / this.politicos.length;
+
         return this.avaliacaoGeral;
     }
 
-    getNome(): string{
+    getNome(): string {
         return this.nome;
     }
 
-    getSigla(): string{
+    getSigla(): string {
         return this.sigla;
     }
 
-    getAvaliacaoGeral(): number{
+    getAvaliacaoGeral(): number {
         return this.avaliacaoGeral;
     }
 
-    getPoliticos(): Politico[]{
+    getPoliticos(): Politico[] {
         return ([] as Politico[]).concat(this.politicos);
     }
-    
-    adicionarPolitico(politico: Politico){
+
+    adicionarPolitico(politico: Politico) {
         this.politicos.push(politico);
     }
 }

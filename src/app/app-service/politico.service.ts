@@ -18,6 +18,7 @@ export class PoliticoService {
   }
 
   salvarPolitico(novoPolitico: Politico){
+    novoPolitico.avaliarMandatos();
     this.databaseService.salvarPolitico(novoPolitico);
   }
 
