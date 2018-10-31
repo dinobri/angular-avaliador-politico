@@ -1,24 +1,33 @@
+
 <h2 *ngIf="!partido.nome">Novo partido</h2>
 <h2 *ngIf="partido.nome">{{partido.nome}}</h2>
 
-<div class="row">
-  <div class="col-lg-8">
-
-    <div class="form-group">
-      <label for="nome">Nome do partido</label>
-      <input type="text" class="form-control" id="nome" [(ngModel)]="partido.nome">
+<form #partidoForm="ngForm" (ngSubmit)="salvar(partidoForm)">
+  <div class="row">
+    <div class="col-lg-8">
+  
+      <div class="form-group">
+        <label for="nome-partido">Nome do partido *</label>
+        <input type="text" class="form-control" id="nome-partido" name="nome-partido" required
+          [ngClass]="{'is-invalid': !nomePartido.valid && (formSubmetido || !nomePartido.pristine)}"
+          [(ngModel)]="partido.nome" #nomePartido="ngModel">
+        <div class="invalid-feedback">Campo obrigatório.</div>
+      </div>
+  
+      <div class="form-group">
+        <label for="sigla">Sigla *</label>
+        <input type="text" class="form-control" id="sigla" name="sigla" required
+          [ngClass]="{'is-invalid': !sigla.valid && (formSubmetido || !sigla.pristine)}" 
+          [(ngModel)]="partido.sigla" #sigla="ngModel">
+        <div class="invalid-feedback">Campo obrigatório.</div>
+      </div>
+      
+      <div class="acoes my-4">
+        <button type="button" class="btn btn-sm btn-light mr-1" (click)="voltar();">Voltar</button>
+        <button type="submit" class="btn btn-sm btn-primary mr-1" >Salvar</button>
+      </div>
+  
     </div>
-
-    <div class="form-group">
-      <label for="sigla">Sigla</label>
-      <input type="text" class="form-control" id="sigla" [(ngModel)]="partido.sigla">
-    </div>
-    
-    <div class="acoes my-4">
-      <!-- <button type="button" class="btn btn-sm btn-light mr-1" (click)="voltar();">Voltar</button> -->
-      <button type="button" class="btn btn-sm btn-primary mr-1" (click)="salvar();">Salvar</button>
-    </div>
-
   </div>
-</div>
+</form>
 

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { PartidoService } from '../../app-service/partido.service';
 import { Partido } from '../../app-model/Partido';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'ap-partido-form',
@@ -11,7 +12,9 @@ import { Partido } from '../../app-model/Partido';
 })
 export class PartidoFormComponent implements OnInit {
 
-  @Input() partido: Partido;
+  partido: Partido;
+  formSubmetido: boolean;
+
 
   constructor(
     private route: ActivatedRoute,
@@ -20,6 +23,7 @@ export class PartidoFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.formSubmetido = false;
     this.getPartido();
   }
 
@@ -33,9 +37,15 @@ export class PartidoFormComponent implements OnInit {
     }
   }
 
-  salvar(){
-    this.partidoService.salvarPartido(this.partido);
-    this.voltar();
+  salvar(form: NgForm){
+    this.formSubmetido = true;
+    
+    if(form.valid){
+      this.partidoService.salvarPartido(this.partido);
+      this.voltar();
+    } else {
+      // alert('Formulário contém erros de validação.');
+    }
   }
 
   voltar(){
