@@ -9,6 +9,7 @@ export class MensagensService {
   constructor() { }
 
   adicionar(msg: string){
+    debugger;
     this.mensagens.push(msg);
   }
 

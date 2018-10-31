@@ -4,6 +4,7 @@ import { PoliticoService } from '../../app-service/politico.service';
 import { Partido } from '../../app-model/Partido';
 import { Politico } from '../../app-model/Politico';
 import { Mandato } from '../../app-model/Mandato';
+import { MensagensService } from '../../app-service/mensagens.service';
 
 @Component({
   selector: 'app-avaliacao-eleitor',
@@ -21,7 +22,11 @@ export class AvaliacaoEleitorComponent implements OnInit {
   @Input() cpf: string;
   @Input() avaliacao: number;
 
-  constructor(private partidoService: PartidoService, private politicoService: PoliticoService) { }
+  constructor(
+    private partidoService: PartidoService, 
+    private politicoService: PoliticoService,
+    private msgService: MensagensService
+  ) { }
 
   ngOnInit() {
     this.carregarListas();
@@ -40,11 +45,17 @@ export class AvaliacaoEleitorComponent implements OnInit {
   }
 
   salvar(){
-    this.mandato.incluirAvaliacaoEleitor(this.cpf, this.avaliacao);
-    this.politico.avaliarMandatos();
-    this.partido.avaliar();
+    this.msgService.limpar();
 
-    this.limpar();
+    let resposta = this.mandato.incluirAvaliacaoEleitor(this.cpf, this.avaliacao);
+    if(resposta.length){
+      this.msgService.adicionar(resposta);
+    } else {
+      this.politico.avaliarMandatos();
+      this.partido.avaliar();
+  
+      this.limpar();
+    }
   }
 
   limpar(){

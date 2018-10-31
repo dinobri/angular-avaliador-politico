@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { PartidoService } from '../../app-service/partido.service';
 import { Partido } from '../../app-model/Partido';
 import { NgForm } from '@angular/forms';
+import { MensagensService } from '../../app-service/mensagens.service';
 
 @Component({
   selector: 'ap-partido-form',
@@ -19,7 +20,8 @@ export class PartidoFormComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private partidoService: PartidoService, 
-    private location: Location
+    private location: Location,
+    private msgService: MensagensService
   ) { }
 
   ngOnInit() {
@@ -42,9 +44,10 @@ export class PartidoFormComponent implements OnInit {
     
     if(form.valid){
       this.partidoService.salvarPartido(this.partido);
+      this.msgService.adicionar('Partido registrado com sucesso.');
       this.voltar();
     } else {
-      // alert('Formulário contém erros de validação.');
+      this.msgService.adicionar('Formulário contém erros de validação.');
     }
   }
 

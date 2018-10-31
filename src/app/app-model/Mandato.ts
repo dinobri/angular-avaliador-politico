@@ -32,20 +32,23 @@ export abstract class Mandato{
         return avaliacaoEleitores / 10;
     }
     
-    public incluirAvaliacaoEleitor(cpf: string, avaliacao: number) {
+    public incluirAvaliacaoEleitor(cpf: string, avaliacao: number): string {
+		if (cpf.length != 11) {
+			return 'CPF inválido.';
+        }
+        
 		if (this.avaliacoesEleitores.some(ae => ae.cpf === cpf)) {
-			// TODO: Mensagem ("Já existe uma avaliaçãoo com este CPF ("+ cpf +").");
-			return;
+			return 'Já existe uma avaliaçãoo com este CPF ('+ cpf +').';
 		}
 
 		if (avaliacao < 0 || avaliacao > 10) {
-			// TODO: Mensagem ("A avaliaçãoo de um mandato deve ser uma nota de 0 a 10.");
-			return;
+			return "A avaliação de um mandato deve ser uma nota de 0 a 10.";
 		}
 
         this.avaliacoesEleitores.push(new AvaliacaoEleitor(cpf, avaliacao));
         
         this.avaliar();
+        return "";
 	}
 }
 
